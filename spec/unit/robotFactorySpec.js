@@ -102,6 +102,39 @@
 
 
 
+    describe('robot instructions', function () {
+      var elonBot3;
+      beforeEach(function () {
+        elonBot3 = robotFactory.createRobot({
+          vector:{
+            x: 0,
+            y: 0,
+            directionIndex:0
+          }
+        });
+      });
+
+      // instruction set greater than 100 should return null
+      it('should return 0 1 N when moving forward', function () {
+        expect(elonBot3.parseInstructions('fflfffflllrrfffllllrrrfffff' +
+            'flllrrfflfffrfflfffflrffflffffrfffflllllfffflllffrffffrrrff' +
+            'lfrrrrffllfrfffff')).toBe(null);
+      });
+
+      // should still return default position of 0 0 N
+      it('should return 0 0 N', function () {
+        expect(elonBot3.parseInstructions('r')).toBe('0 0 N');
+      });
+
+      // should still return default position of 0 0 N
+      it('should return 0 0 N', function () {
+        expect(elonBot3.parseInstructions('r')).toBe('0 0 N');
+      });
+
+    });
+
+
+
 
   });
 

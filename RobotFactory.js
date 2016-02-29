@@ -97,7 +97,7 @@ RobotFactory.prototype.createRobot = function (defaults) {
 
         console.log('parseInstructions');
         if ((this.isLost) || (instructions.length > 100))
-            return;
+            return null;
 
         // Iterate through each command - O(n) linear time complexity
         // NOTE:    For larger instruction sets, may need to separate into event loop
