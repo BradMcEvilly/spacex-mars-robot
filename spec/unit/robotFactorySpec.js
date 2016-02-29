@@ -10,13 +10,11 @@
 
   describe('robotFactory', function () {
 
-
     var World,
         world,
         RobotFactory,
         robotFactory,
         elonMuskBot;
-
 
       World = require('../../core/World');
       world = new World({
@@ -50,7 +48,6 @@
     it('should return 0', function () {
       expect(elonMuskBot.vector.directionIndex).toBe(0);
     });
-
 
     // lost robot tests
     describe('robot lost', function () {
@@ -97,8 +94,6 @@
       });
     });
 
-
-
     describe('robot simple instructions', function () {
       var elonBot3;
       beforeEach(function () {
@@ -140,21 +135,57 @@
             }
         });
 
-      it('should return 0 0 E', function () {
-        expect(elonBot4.parseInstructions('r')).toBe('0 0 E');
-      });
+        it('should return 0 0 E', function () {
+            expect(elonBot4.parseInstructions('r')).toBe('0 0 E');
+        });
 
+        it('should return 0 0 S', function () {
+            expect(elonBot4.parseInstructions('r')).toBe('0 0 S');
+        });
 
-      it('should return 0 0 S', function () {
-        expect(elonBot4.parseInstructions('r')).toBe('0 0 S');
-      });
+        it('should return 0 0 E', function () {
+            expect(elonBot4.parseInstructions('l')).toBe('0 0 E');
+        });
 
     });
 
+    describe('robot lost instructions', function () {
+        var elonBot5;
+        elonBot5 = robotFactory.createRobot({
+            vector:{
+                x: 0,
+                y: 0,
+                directionIndex:0
+            }
+        });
+
+        it('should return 2 -1 S LOST', function () {
+            expect(elonBot5.parseInstructions('frffrffflflflfffflffrfrrfrfffflf')).toBe('2 -1 S LOST');
+        });
 
 
+      });
+
+      describe('robot normal instructions', function () {
+          var elonBot6;
+          elonBot6 = robotFactory.createRobot({
+              vector:{
+                  x: 0,
+                  y: 0,
+                  directionIndex:0
+              }
+          });
+
+          it('should return 6 4 W LOST', function () {
+              expect(elonBot6.parseInstructions('fffffffrffffffflfrfrfrfffflf')).toBe('6 4 W');
+          });
+
+          it('should return 9 5 W LOST', function () {
+              expect(elonBot6.parseInstructions('lflffrffffrffffffflfrfrfrfffflf')).toBe('9 5 W');
+          });
+
+      });
 
   });
-
-
+    
 } ());
