@@ -18,26 +18,23 @@
         elonMuskBot;
 
 
-
-    beforeEach(function () {
-
       World = require('../../core/World');
       world = new World({
-        // set world quadrant in constructor
-        min: { x: 0,  y: 0  },
-        max: { x: 50, y: 25 }
+          // set world quadrant in constructor
+          min: { x: 0,  y: 0  },
+          max: { x: 50, y: 25 }
       });
       RobotFactory = require('../../RobotFactory');
       robotFactory = new RobotFactory();
 
       elonMuskBot = robotFactory.createRobot({
-        vector:{
-          x: 1,
-          y: 2,
-          directionIndex:0
-        }
+          vector:{
+              x: 1,
+              y: 2,
+              directionIndex:0
+          }
       });
-    });
+
 
     // direction str test
     it('should return N', function () {
@@ -133,26 +130,23 @@
 
     });
 
-    describe('robot simple instructions', function () {
-      var elonBot4;
-      beforeEach(function () {
+    describe('robot more simple instructions', function () {
+        var elonBot4;
         elonBot4 = robotFactory.createRobot({
-          vector:{
-            x: 0,
-            y: 0,
-            directionIndex:0
-          }
+            vector:{
+                x: 0,
+                y: 0,
+                directionIndex:0
+            }
         });
+
+      it('should return 0 0 E', function () {
+        expect(elonBot4.parseInstructions('r')).toBe('0 0 E');
       });
 
-      // should still return default position of 0 0 N
-      it('should return 0 0 N', function () {
-        expect(elonBot3.parseInstructions('')).toBe('0 0 N');
-      });
 
-
-      it('should return 2 1 E', function () {
-        expect(elonBot3.parseInstructions('frff')).toBe('2 1 E');
+      it('should return 0 0 S', function () {
+        expect(elonBot4.parseInstructions('r')).toBe('0 0 S');
       });
 
     });

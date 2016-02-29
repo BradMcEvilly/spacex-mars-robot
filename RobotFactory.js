@@ -53,7 +53,7 @@ RobotFactory.prototype.createRobot = function (defaults) {
         if(curIndex==body.directions.length-1)
             body.vector.directionIndex = 0;
         else
-            body.vector.directionIndex++;
+            body.vector.directionIndex = curIndex+1;
 
         return body.vector;
     };
