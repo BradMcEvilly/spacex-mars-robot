@@ -149,7 +149,7 @@
 
     });
 
-    describe('robot lost instructions', function () {
+    describe('robot go get lost instructions', function () {
         var elonBot5;
         elonBot5 = robotFactory.createRobot({
             vector:{
@@ -163,7 +163,6 @@
             expect(elonBot5.parseInstructions('frffrffflflflfffflffrfrrfrfffflf')).toBe('2 -1 S LOST');
         });
 
-
       });
 
       describe('robot normal instructions', function () {
@@ -176,16 +175,16 @@
               }
           });
 
-          it('should return 6 4 W LOST', function () {
+          it('should return 6 4 W', function () {
               expect(elonBot6.parseInstructions('fffffffrffffffflfrfrfrfffflf')).toBe('6 4 W');
           });
 
-          it('should return 9 5 W LOST', function () {
+          it('should return 9 5 W', function () {
               expect(elonBot6.parseInstructions('lflffrffffrffffffflfrfrfrfffflf')).toBe('9 5 W');
           });
 
       });
 
   });
-    
+
 } ());
