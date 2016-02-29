@@ -95,7 +95,7 @@ RobotFactory.prototype.createRobot = function (defaults) {
 
     body.parseInstructions = function (instructions) {
 
-        console.log('parseInstructions');
+        // also catch edge case >100
         if ((this.isLost) || (instructions.length > 100))
             return null;
 
@@ -109,6 +109,8 @@ RobotFactory.prototype.createRobot = function (defaults) {
             if(!this.isLost)
                 this.processInstruction(instructions.charAt(i));
         }
+
+        return this.getPositionStr(body.vector);
 
     };
 

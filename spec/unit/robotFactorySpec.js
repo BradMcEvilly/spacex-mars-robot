@@ -102,7 +102,7 @@
 
 
 
-    describe('robot instructions', function () {
+    describe('robot simple instructions', function () {
       var elonBot3;
       beforeEach(function () {
         elonBot3 = robotFactory.createRobot({
@@ -123,12 +123,36 @@
 
       // should still return default position of 0 0 N
       it('should return 0 0 N', function () {
-        expect(elonBot3.parseInstructions('r')).toBe('0 0 N');
+        expect(elonBot3.parseInstructions('')).toBe('0 0 N');
+      });
+
+
+      it('should return 2 1 E', function () {
+        expect(elonBot3.parseInstructions('frff')).toBe('2 1 E');
+      });
+
+    });
+
+    describe('robot simple instructions', function () {
+      var elonBot4;
+      beforeEach(function () {
+        elonBot4 = robotFactory.createRobot({
+          vector:{
+            x: 0,
+            y: 0,
+            directionIndex:0
+          }
+        });
       });
 
       // should still return default position of 0 0 N
       it('should return 0 0 N', function () {
-        expect(elonBot3.parseInstructions('r')).toBe('0 0 N');
+        expect(elonBot3.parseInstructions('')).toBe('0 0 N');
+      });
+
+
+      it('should return 2 1 E', function () {
+        expect(elonBot3.parseInstructions('frff')).toBe('2 1 E');
       });
 
     });
