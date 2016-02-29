@@ -80,9 +80,9 @@
 
 
     describe('robot positioning', function () {
-
+      var elonBot2;
       beforeEach(function () {
-        elonMuskBot = robotFactory.createRobot({
+        elonBot2 = robotFactory.createRobot({
           vector:{
             x: 0,
             y: 0,
@@ -92,38 +92,17 @@
       });
 
       it('should return 0 1 N when moving forward', function () {
-        expect(elonMuskBot.processInstruction('f')).toBe('0 1 N');
+        expect(elonBot2.processInstruction('f')).toBe('0 1 N');
       });
 
       it('should return 0 0 E when turning right', function () {
-        console.log('processInstruction(r) ' + elonMuskBot.processInstruction('r'));
-        expect(elonMuskBot.processInstruction('r')).toBe('0 1 E');
+        expect(elonBot2.processInstruction('r')).toBe('0 0 E');
       });
     });
 
-    describe('rotation integer for string', function () {
-      beforeEach(function () {
-        //elonMuskBot = robotFactory.createRobot();
-      });
 
-      it('should return 0 1 N when moving forward', function () {
-        expect(elonMuskBot.processInstruction('f')).toBe('0 1 N');
-      });
 
-      it('should return 0 0 E when turning right', function () {
-        expect(elonMuskBot.processInstruction('r')).toBe('0 0 E');
-      });
-    });
 
-    describe('robot ', function () {
-      beforeEach(function () {
-        elonMuskBot = robotFactory.createRobot({x: 26, y: 12, directionsIndex: 3});
-      });
-
-      it('should return when given lflflflflrlrlrlflflrlrlflrlf', function () {
-        expect(elonMuskBot.parseInstructions('lflflflflrlrlrlflflrlrlflrlf')).toBe('26 12 W');
-      });
-    });
   });
 
 

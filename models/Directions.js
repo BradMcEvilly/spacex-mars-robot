@@ -5,7 +5,7 @@
     'use strict';
     module.exports = (function () {
         return function (options) {
-            return ['N', 'E', 'S', 'W']
+            return ['N', 'E', 'S', 'W'];
         };
     } ());
 } ());

@@ -44,28 +44,18 @@ RobotFactory.prototype.createRobot = function (defaults) {
     body.keyName = 'robot';
     body.isLost = !world.checkBounds(body.vector.x, body.vector.y);
 
-    // Simplified arithmetic rotation simulation - not using expensive trigonometric arithmetic (angle, radians, etc)
-    // Overkill for our purposes.
-    body.simpleRotate = function (direction) {
-        if (direction > 0)
-            this.incrementDirection();
-        else
-            this.decrementDirection();
-    };
+    // Simplified arithmetic rotation simulation methods - avoids using expensive trigonometric
+    // arithmetic (angle, radians, etc) - overkill for our purposes.
 
     // simulates clockwise rotation
     body.incrementDirection = function (amt) {
-        var newIndex;
-        var curIndex = this.vector.directionIndex;
+        var curIndex = body.vector.directionIndex;
         if(curIndex==body.directions.length-1)
-            newIndex = 0;
+            body.vector.directionIndex = 0;
         else
-            newIndex = this.vector.directionIndex+amt;
-        return {
-            x:this.vector.x,
-            y:this.vector.y,
-            directionIndex: newIndex
-        }
+            body.vector.directionIndex++;
+
+        return body.vector;
     };
 
     // simulates counter-clockwise rotation
@@ -77,8 +67,8 @@ RobotFactory.prototype.createRobot = function (defaults) {
         else
             newIndex = v.directionIndex-amt;
         return {
-            x:this.vector.x,
-            y:this.vector.y,
+            x:body.vector.x,
+            y:body.vector.y,
             directionIndex: newIndex
         }
     };
@@ -140,8 +130,8 @@ RobotFactory.prototype.createRobot = function (defaults) {
      * @returns {{x, y, directionIndex}|*}
      */
     body.r = function () {
-        this.vector = this.incrementDirection(1);
-        return this.getPositionStr(this.vector);
+        body.vector = this.incrementDirection(1);
+        return this.getPositionStr(body.vector);
     };
 
     /**
@@ -149,8 +139,8 @@ RobotFactory.prototype.createRobot = function (defaults) {
      * @returns {{x, y, directionIndex}|*}
      */
     body.l = function () {
-        this.vector = this.decrementDirection(1);
-        return this.vector;
+        body.vector = this.decrementDirection(1);
+        return body.vector;
     };
 
     /**
@@ -171,7 +161,7 @@ RobotFactory.prototype.createRobot = function (defaults) {
         vectorNext = {
             x:nextPos.x,
             y:nextPos.y,
-            directionIndex:this.vector.directionIndex
+            directionIndex:body.vector.directionIndex
         };
 
         // check against lost coords
@@ -179,23 +169,23 @@ RobotFactory.prototype.createRobot = function (defaults) {
 
         // set as current position
         if(typeof lostVal === 'undefined')
-            this.vector = vectorNext;
+            body.vector = vectorNext;
         else
-            return this.getPositionStr(this.vector);
+            return this.getPositionStr(body.vector);
         // check bounds & report lost if appropriate
 
-        this.isLost = !world.checkBounds(this.vector.x, this.vector.y);
+        this.isLost = !world.checkBounds(body.vector.x, body.vector.y);
 
         // put value in hash
         if(this.isLost)
-            world.lostObjectsHash[this.getPositionStr(this.vector)]=true;
+            world.lostObjectsHash[body.getPositionStr(body.vector)]=true;
 
         // return new vector
-        return this.getPositionStr(this.vector);
+        return this.getPositionStr(body.vector);
     };
 
     body.getNextPosition = function(){
-        var directionIndex = this.vector.directionIndex;
+        var directionIndex = body.vector.directionIndex;
         var self = this;
 
         return this[self.getDirectionStr(directionIndex)]();
@@ -213,19 +203,19 @@ RobotFactory.prototype.createRobot = function (defaults) {
     // y = f(x)
     body.N = function () {
         console.log('calling North function');
-        return {x:this.vector.x, y:this.vector.y+1};
+        return {x:body.vector.x, y:body.vector.y+1};
     };
     body.S = function () {
         console.log('calling South function');
-        return {x:this.vector.x, y:this.vector.y-1};
+        return {x:body.vector.x, y:body.vector.y-1};
     };
     body.E = function () {
         console.log('calling East function');
-        return {x:this.vector.x+1, y:this.vector.y};
+        return {x:body.vector.x+1, y:body.vector.y};
     };
     body.W = function () {
         console.log('calling West function');
-        return {x:this.vector.x-1, y:this.vector.y};
+        return {x:body.vector.x-1, y:body.vector.y};
     };
 
 
