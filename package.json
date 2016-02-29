@@ -1,0 +1,23 @@
+{
+  "name": "spacex-mars-robot",
+  "version": "1.0.0",
+  "description": "Code Exercise",
+  "main": "app.js",
+  "dependencies": {
+    "rsvp": "^3.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BradMcEvilly/spacex-mars-robot"
+  },
+  "author": "Brad McEvilly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BradMcEvilly/spacex-mars-robot/issues"
+  },
+  "homepage": "https://github.com/BradMcEvilly/spacex-mars-robot"
+}
