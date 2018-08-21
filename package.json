@@ -1,7 +1,7 @@
 {
   "name": "spacex-mars-robot",
   "version": "1.0.0",
-  "description": "Code Exercise",
+  "description": "Prototype",
   "main": "app.js",
   "dependencies": {
     "rsvp": "^3.2.1"
