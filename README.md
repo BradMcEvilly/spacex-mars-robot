@@ -1,10 +1,10 @@
 # spacex-mars-robot
-Code Exercise
+Prototype
 # Programming Problem 
 
 ## Introduction 
 
-Design & implement a solution using C#/Nodejs/Java to solve the problem described below. The objective of the problem is to allow the candidate to demonstrate their design principles and development skills. The problem is provided with sample data to be used for testing and the candidate should be able to demonstrate their solution using the supplied data in the form of a unit test or a simple user interface. 
+Prototype for hackathon designing & implementing a solution using Nodejs to solve the problem described below. The objective of the problem is to allow the candidate to demonstrate their design principles and development skills. The problem is provided with sample data to be used for testing and the candidate should be able to demonstrate their solution using the supplied data in the form of a unit test or a simple user interface. 
 
 ## Expected Outcome 
 
